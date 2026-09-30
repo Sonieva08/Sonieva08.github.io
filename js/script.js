@@ -26,10 +26,10 @@ $("availability").innerHTML = P.profile.availability
   : "";
 
 // Les trois boutons
-const btn = "inline-flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold shadow-md transition active:scale-95";
+const btn = "inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold shadow-md transition active:scale-95";
 $("cta").innerHTML = `
-  <a href="#projets" class="${btn} bg-electric text-white hover:bg-electric2">Voir mes projets ${icon("arrow_downward")}</a>
-  ${L.cv ? `<a href="${L.cv}" download class="${btn} bg-white text-night hover:bg-mist2">${icon("download")} Télécharger mon CV</a>` : ""}
+  <a href="#projets" class="${btn} col-span-2 sm:col-span-1 bg-electric text-white hover:bg-electric2">Voir mes projets ${icon("arrow_downward")}</a>
+    ${L.cv ? `<a href="${L.cv}" download class="${btn} bg-white text-night hover:bg-mist2">${icon("download")} Télécharger mon CV</a>` : ""}
   <a href="#contact" class="${btn} bg-night text-white hover:bg-electric">${icon("mail")} Me contacter</a>
 `;
 
@@ -44,27 +44,45 @@ if (L.cv) {
 const social = (url, label) => url
   ? `<a href="${url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-ink text-sm font-medium shadow-sm hover:text-electric transition">${label} ${icon("open_in_new", 16)}</a>`
   : "";
-$("socials").innerHTML = social(L.github, "GitHub") + social(L.linkedin, "LinkedIn");
+$('socials').innerHTML = social(L.github, "GitHub") + social(L.linkedin, "LinkedIn");
+const reseaux = social(L.github, "GitHub") + social(L.linkedin, "LinkedIn");
+$("socials").innerHTML = reseaux
+  ? `<span class="sm:hidden text-xs font-mono text-soft">Réseaux</span><div class="flex gap-2">${reseaux}</div>`
+  : "";
 
-// Photo (ou initiales si le champ photo est vide)
+// Visage : photo ou initiales si le champ photo est vide
 const initiales = P.profile.name.split(" ").map((mot) => mot[0]).join("");
+const visage = (tailleTexte, alt = P.profile.name) => P.profile.photo
+  ? `<img src="${P.profile.photo}" alt="${alt}" class="w-full h-full rounded-full object-cover bg-white">`
+  : `<div class="w-full h-full rounded-full bg-night text-white flex items-center justify-center font-display font-extrabold ${tailleTexte}">${initiales}</div>`;
+
+// Grande photo (ordinateur)
 $("photo").innerHTML = `
   <div class="relative w-64 h-64 sm:w-80 sm:h-80">
     <div class="absolute inset-0 rounded-full border-2 border-dashed border-electric/30"></div>
     <div class="absolute inset-3 rounded-full bg-white p-1.5 shadow-xl">
-      ${P.profile.photo
-        ? `<img src="${P.profile.photo}" alt="${P.profile.name}" class="w-full h-full rounded-full object-cover">`
-        : `<div class="w-full h-full rounded-full bg-night text-white flex items-center justify-center font-display text-6xl font-extrabold">${initiales}</div>`}
+      ${visage("text-6xl")}
     </div>
   </div>
 `;
+
+// Petit avatar à côté du nom (téléphone)
+$("photo-small").innerHTML = `
+  <div class="w-full h-full rounded-full p-1 bg-gradient-to-tr from-electric to-mist3 shadow-md">
+    ${visage("text-xl", "")}
+  </div>
+`;
+
+// Petit avatar dans le menu (téléphone)
+$("nav-avatar").innerHTML = visage("text-[10px]", "");
 
 // Compteurs calculés automatiquement à partir de data.js
 const nbTechnologies = new Set(P.skills.flatMap((s) => s.items)).size;
 const compteurs = [
   [P.projects.length, "Projets"],
   [P.certifications.length, "Certifications"],
-  [nbTechnologies, "Technologies"]
+  [nbTechnologies, "Technologies"],
+  [P.education.length, "Formations"]
 ];
 $("stats").innerHTML = compteurs
   .map(([nombre, libelle]) => `
@@ -241,6 +259,7 @@ $("contact-list").innerHTML = contacts
           <span class="block text-xs font-mono text-soft">${c.label}</span>
           <span class="block font-semibold text-night truncate group-hover:text-electric transition">${c.texte}</span>
         </span>
+        <span class="ml-auto text-soft">${icon("chevron_right", 22)}</span>
       </a>
     </li>`)
   .join("");
@@ -255,3 +274,59 @@ $("brand").innerHTML = P.profile.logo
   ? `<img src="${P.profile.logo}" alt="S.O.A., retour à l'accueil" class="h-10 w-auto">`
   : initiales.split("").join(".") + ".";
 $("footer-name").textContent = P.profile.name;
+
+/* ===================== MENU TÉLÉPHONE ===================== */
+
+const tiroir = $("drawer");
+const fond = $("drawer-backdrop");
+const boutonMenu = $("drawer-open");
+
+const ouvrirMenu = () => {
+  tiroir.removeAttribute("inert");
+  tiroir.classList.remove("translate-x-full");
+  fond.classList.remove("opacity-0", "pointer-events-none");
+  boutonMenu.setAttribute("aria-expanded", "true");
+};
+
+const fermerMenu = () => {
+  tiroir.setAttribute("inert", "");
+  tiroir.classList.add("translate-x-full");
+  fond.classList.add("opacity-0", "pointer-events-none");
+  boutonMenu.setAttribute("aria-expanded", "false");
+};
+
+boutonMenu.addEventListener("click", ouvrirMenu);
+$("drawer-close").addEventListener("click", fermerMenu);
+fond.addEventListener("click", fermerMenu);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") fermerMenu(); });
+tiroir.querySelectorAll("a").forEach((lien) => lien.addEventListener("click", fermerMenu));
+
+// Bouton CV du menu latéral
+if (L.cv) {
+  $("drawer-cv").href = L.cv;
+} else {
+  $("drawer-cv").parentElement.remove();
+}
+
+/* ===================== BARRE DU BAS : ONGLET ACTIF ===================== */
+
+const onglets = [...document.querySelectorAll("[data-sections]")];
+
+const marquerOnglet = (idSection) => {
+  onglets.forEach((lien) => {
+    const actif = lien.dataset.sections.split(" ").includes(idSection);
+    lien.classList.toggle("text-electric", actif);
+    lien.classList.toggle("font-bold", actif);
+    lien.classList.toggle("text-soft", !actif);
+  });
+};
+
+if ("IntersectionObserver" in window) {
+  const observateur = new IntersectionObserver((entrees) => {
+    entrees.forEach((entree) => {
+      if (entree.isIntersecting) marquerOnglet(entree.target.id);
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section").forEach((section) => observateur.observe(section));
+}
+marquerOnglet("accueil");
