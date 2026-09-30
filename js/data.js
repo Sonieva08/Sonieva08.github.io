@@ -7,8 +7,8 @@ const PORTFOLIO = {
     availability: "Disponible pour un stage ou une première opportunité professionnelle",
     photo: "images/profile/photo.jpg",
     logo: "images/profile/logo.png",
-        contactText: "Je cherche un stage ou une première opportunité professionnelle. N'hésitez pas à me contacter.",
-       about: [
+    contactText: "Je cherche un stage ou une première opportunité professionnelle. N'hésitez pas à me contacter.",
+    about: [
       { icon: "school", title: "Parcours", text: "Licence en Sciences Informatiques à l'UNITECH (2020–2024), puis DESS en cybersécurité à l'UNITECH/BRH, depuis mars 2025." },
       { icon: "code", title: "Ce qui m'intéresse", text: "Le développement web et la sécurité des systèmes, des réseaux et des applications." },
       { icon: "flag", title: "Objectif", text: "Trouver un stage ou une première opportunité pour développer mon expérience pratique." }
@@ -37,9 +37,6 @@ const PORTFOLIO = {
       badge: "Application web",
       icon: "storefront",
       demoSoon: false,
-    /*  docs: [
-        { label: "Rapport du projet", url: "documents/rapport-gestflore.pdf" }
-      ],*/
       summary: "Application web de gestion des stocks et des ventes pour Flore Chic Girls Store, un magasin de vêtements avec plusieurs points de vente. Projet de fin d'études de Licence.",
       problem: "La gestion manuelle causait des pertes de produits, des ruptures de stock imprévues, des erreurs de facturation et aucun indicateur fiable pour décider.",
       role: "Projet réalisé en binôme avec Judlet Stanis, de l'analyse des besoins à la conception et au développement.",
@@ -62,7 +59,8 @@ const PORTFOLIO = {
       github: "",
       demo: ""
     }
-   ],
+  ],
+
   certifications: [
     {
       title: "Développement Mobile – Niveau débutant (formation de 60 h à distance)",
