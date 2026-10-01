@@ -2,14 +2,14 @@ const PORTFOLIO = {
 
   profile: {
     name: "Sonieva Oliviera ALPHONSE",
-    title: "Diplômée en Sciences Informatiques | Cybersécurité | Développement Web",
-    intro: "Jeune professionnelle en informatique, orientée développement web et cybersécurité, je conçois des solutions informatiques et je m'intéresse particulièrement à la sécurité des systèmes, des réseaux et des applications.",
+    title: "Ingénieur en Sciences informatique| Spécialiste en Cybersécurité | Développeur Web",
+    intro: "Jeune professionnel en informatique, orienté développement web et cybersécurité, je conçois des solutions informatiques et je m'intéresse particulièrement à la sécurité des systèmes, des réseaux et des applications.",
     availability: "Disponible pour un stage ou une première opportunité professionnelle",
     photo: "images/profile/photo.jpg",
     logo: "images/profile/logo.png",
-    contactText: "Je cherche un stage ou une première opportunité professionnelle. N'hésitez pas à me contacter.",
+    contactText: " N'hésitez pas à me contacter.",
     about: [
-      { icon: "school", title: "Parcours", text: "Licence en Sciences Informatiques à l'UNITECH (2020–2024), puis DESS en cybersécurité à l'UNITECH/BRH, depuis mars 2025." },
+      { icon: "school", title: "Parcours", text: "Licence en Sciences Informatiques à l'Université de Technologie d’Haïti (UNITECH) (2020–2024), puis DESS en cybersécurité à l'Université de Technologie d’Haïti (UNITECH)/BRH, depuis mars 2025." },
       { icon: "code", title: "Ce qui m'intéresse", text: "Le développement web et la sécurité des systèmes, des réseaux et des applications." },
       { icon: "flag", title: "Objectif", text: "Trouver un stage ou une première opportunité pour développer mon expérience pratique." }
     ]
@@ -94,14 +94,14 @@ const PORTFOLIO = {
   education: [
     {
       title: "DESS en cybersécurité",
-      org: "UNITECH / BRH",
+      org: "Université de Technologie d’Haïti (UNITECH) / BRH",
       period: "Depuis mars 2025",
       description: "",
       tags: []
     },
     {
       title: "Licence en Sciences Informatiques",
-      org: "UNITECH",
+      org: "Université de Technologie d’Haïti (UNITECH)",
       period: "2020–2024",
       description: "",
       tags: []
