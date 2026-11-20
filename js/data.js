@@ -1,4 +1,4 @@
-PORTFOLIO = {
+﻿PORTFOLIO = {
   profile: {
     name: "Sonieva Oliviera ALPHONSE",
     title: "Développeur de solutions numériques | Cybersécurité",
