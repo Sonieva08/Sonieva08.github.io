@@ -1,221 +1,772 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <title>Sonieva Oliviera Alphonse · Portfolio</title>
-  <meta name="description" content="Portfolio de Sonieva Oliviera Alphonse : développement web, cybersécurité et réseaux.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonieva Oliviera ALPHONSE — Cybersécurité &amp; Développement de Solutions</title>
+  <meta name="description" content="Portfolio de Sonieva Oliviera Alphonse : développement de solutions logicielles, applications web/mobiles et cybersécurité.">
+  <meta name="theme-color" content="#0B1F3A">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sonieva Oliviera ALPHONSE — Portfolio">
+  <meta property="og:description" content="Développement de solutions numériques, conception d'applications et cybersécurité.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="images/profile/favicon.png">
+
+  <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-  <link rel="icon" type="image/png" href="images/profile/favicon.png">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            night: "#0b1f3a",
-            electric: "#0051d5",
-            electric2: "#316bf3",
-            page: "#faf8ff",
-            mist: "#f2f3ff",
-            mist2: "#eaedff",
-            mist3: "#dbe1ff",
-            ink: "#131b2e",
-            soft: "#44474d"
+            'accent': '#2563EB',
+            'on-accent': '#FFFFFF',
+            'accent-tint': '#EEF0FF',
+            'on-accent-tint': '#002A78',
+            'navy': '#0B1F3A',
+            'on-navy': '#FFFFFF',
+            'success': '#15803D',
+            'light-primary': '#0B1F3A',
+            'light-on-primary': '#FFFFFF',
+            'light-primary-container': '#1F314D',
+            'light-on-primary-container': '#D6E3FF',
+            'light-background': '#F5F7FA',
+            'light-on-background': '#0B1F3A',
+            'light-surface': '#F5F7FA',
+            'light-surface-container-lowest': '#FFFFFF',
+            'light-surface-container': '#ECEEF1',
+            'light-on-surface': '#191C1E',
+            'light-on-surface-variant': '#44474D',
+            'light-outline': '#75777E',
+            'light-outline-variant': '#D0D5DD',
           },
           fontFamily: {
-            display: ["Plus Jakarta Sans", "sans-serif"],
-            sans: ["Inter", "system-ui", "sans-serif"],
-            mono: ["JetBrains Mono", "monospace"]
-          }
-        }
-      }
+            'display': ['"Poppins"', 'sans-serif'],
+            'headline': ['"Poppins"', 'sans-serif'],
+            'title': ['"Poppins"', 'sans-serif'],
+            'body': ['"Inter"', 'sans-serif'],
+            'label': ['"Inter"', 'sans-serif'],
+            'mono': ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
     };
   </script>
+
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    img { max-width: 100%; height: auto; }
-    * { min-width: 0; }
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .tech-grid-bg {
+      background-image: radial-gradient(#D0D5DD 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .card-hover {
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1), border-color 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(11, 31, 58, 0.08);
+      border-color: #2563EB;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card-hover { transition: none; transform: none; }
+    }
   </style>
 </head>
-<body class="bg-page font-sans text-ink antialiased">
-  <!-- Header -->
-  <header class="fixed top-0 inset-x-0 z-40 bg-white/85 backdrop-blur-xl shadow-sm">
-    <div class="h-16 max-w-6xl mx-auto px-3 sm:px-5 flex items-center justify-between gap-2 sm:gap-4">
-      <a id="brand" href="#accueil" class="shrink-0 font-display font-extrabold text-night text-base sm:text-lg">S.O.A.</a>
-      <nav class="hidden md:flex items-center gap-0.5 lg:gap-1 overflow-x-auto text-sm" aria-label="Navigation principale">
-        <a href="#accueil" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Accueil</a>
-        <a href="#apropos" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">À propos</a>
-        <a href="#competences" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Compétences</a>
-        <a href="#projets" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Projets</a>
-        <a href="#certifications" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Certifications</a>
-        <a href="#formation" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Formation</a>
-        <a href="#contact" class="px-2 lg:px-3 py-1.5 rounded-lg text-soft hover:bg-mist hover:text-night whitespace-nowrap transition">Contact</a>
-      </nav>
-      <a id="nav-cv" href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download
-         class="hidden md:inline-flex shrink-0 px-3 lg:px-4 py-2 rounded-lg bg-night text-white text-sm font-semibold hover:bg-electric transition">
-        Télécharger CV
+<body class="bg-light-surface text-light-on-surface font-body antialiased min-h-screen flex flex-col">
+
+  <!-- 1. Barre de navigation fixe -->
+  <header class="sticky top-0 z-50 bg-light-surface-container-lowest/95 backdrop-blur-md border-b border-light-outline-variant">
+    <nav aria-label="Navigation principale" class="max-w-[1200px] mx-auto px-5 lg:px-12 h-[72px] flex items-center justify-between gap-4">
+      <a href="#accueil" class="inline-flex items-center gap-3 min-h-[44px] text-light-primary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-1 transition-colors">
+        <span class="w-10 h-10 rounded-lg bg-light-primary text-light-on-primary flex items-center justify-center shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[22px]" aria-hidden="true">shield_lock</span>
+        </span>
+        <span class="font-headline font-bold text-xl tracking-tight">S.O.A.<span class="text-accent">.</span></span>
       </a>
-      <div class="flex items-center gap-2 md:hidden">
-        <div id="nav-avatar" class="w-8 h-8 empty:hidden"></div>
-        <button id="drawer-open" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer"
-                class="w-11 h-11 flex items-center justify-center rounded-lg text-night hover:bg-mist transition">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
+
+      <!-- Liens desktop -->
+      <ul class="hidden lg:flex items-center gap-1">
+        <li><a href="#accueil" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">Accueil</a></li>
+        <li><a href="#a-propos" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">À propos</a></li>
+        <li><a href="#competences" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">Compétences</a></li>
+        <li><a href="#projets" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">Projets</a></li>
+        <li><a href="#certifications" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">Certifications</a></li>
+        <li><a href="#formation" class="inline-flex items-center min-h-[44px] px-3 rounded font-label text-sm font-medium text-light-on-surface hover:text-accent hover:bg-accent-tint transition-colors">Formation</a></li>
+      </ul>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download class="inline-flex items-center gap-2 min-h-[40px] px-4 rounded-lg bg-light-surface-container-lowest text-light-primary border border-light-outline-variant font-label text-sm font-semibold hover:border-accent hover:text-accent transition-colors">
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span>CV PDF</span>
+        </a>
+        <a href="#contact" class="inline-flex items-center min-h-[40px] px-5 rounded-lg bg-accent text-on-accent font-label text-sm font-semibold hover:bg-light-primary transition-colors shadow-sm">
+          Contact
+        </a>
       </div>
+
+      <!-- Bouton hamburger mobile -->
+      <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-nav-drawer" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg bg-light-surface-container-lowest text-light-primary border border-light-outline-variant hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors">
+        <span class="material-symbols-outlined text-[24px]" aria-hidden="true">menu</span>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-light-outline-variant bg-light-surface-container-lowest px-5 py-5 shadow-lg">
+      <ul class="flex flex-col gap-2">
+        <li><a href="#accueil" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">Accueil</a></li>
+        <li><a href="#a-propos" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">À propos</a></li>
+        <li><a href="#competences" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">Compétences</a></li>
+        <li><a href="#projets" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">Projets</a></li>
+        <li><a href="#certifications" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">Certifications</a></li>
+        <li><a href="#formation" class="mobile-nav-link flex items-center min-h-[44px] px-3 rounded-lg font-label text-base text-light-on-surface hover:bg-accent-tint hover:text-accent">Formation</a></li>
+        <li class="pt-2 flex flex-col gap-2">
+          <a href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download class="mobile-nav-link flex items-center justify-center gap-2 min-h-[44px] px-4 rounded-lg bg-light-surface text-light-primary border border-light-outline-variant font-label text-base font-semibold">
+            <span class="material-symbols-outlined text-[18px]">download</span>
+            <span>Télécharger mon CV</span>
+          </a>
+          <a href="#contact" class="mobile-nav-link flex items-center justify-center min-h-[44px] px-4 rounded-lg bg-accent text-on-accent font-label text-base font-semibold">Contact</a>
+        </li>
+      </ul>
     </div>
   </header>
 
-  <!-- Drawer -->
-  <div id="drawer-backdrop" class="fixed inset-0 z-50 bg-night/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
-  <aside id="drawer" inert aria-label="Menu"
-         class="fixed top-0 right-0 z-50 h-full w-[80vw] max-w-sm bg-white shadow-2xl flex flex-col translate-x-full transition-transform duration-300 md:hidden">
-    <div class="h-16 px-5 flex items-center justify-between">
-      <span class="text-xs font-mono uppercase tracking-wider text-electric">Navigation</span>
-      <button id="drawer-close" type="button" aria-label="Fermer le menu"
-              class="w-11 h-11 flex items-center justify-center rounded-lg text-soft hover:bg-mist transition">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <nav class="px-4 py-2 flex flex-col gap-1 flex-1 overflow-y-auto" aria-label="Menu téléphone">
-      <a href="#accueil" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">home</span>Accueil</a>
-      <a href="#apropos" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">person</span>À propos</a>
-      <a href="#competences" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">construction</span>Compétences</a>
-      <a href="#projets" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">folder</span>Projets</a>
-      <a href="#certifications" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">verified</span>Certifications</a>
-      <a href="#formation" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">school</span>Formation</a>
-      <a href="#contact" class="flex items-center gap-4 px-4 py-3 rounded-lg text-soft hover:bg-mist hover:text-electric transition"><span class="material-symbols-outlined text-electric">mail</span>Contact</a>
-    </nav>
-    <div class="p-5 bg-mist">
-      <a id="drawer-cv" href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download
-         class="h-11 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-electric text-white text-sm font-semibold shadow-md hover:bg-electric2 transition">
-        <span class="material-symbols-outlined" style="font-size:20px">download</span>
-        Télécharger CV
-      </a>
-    </div>
-  </aside>
-
-  <main class="pt-16">
-    <!-- ACCUEIL -->
-    <section id="accueil" class="relative overflow-hidden">
-      <div class="absolute -top-32 right-10 w-96 h-96 rounded-full bg-mist3 opacity-50 blur-3xl pointer-events-none"></div>
-      <div class="relative max-w-6xl mx-auto px-5 pt-20 pb-10 lg:py-24 grid lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-7 flex flex-col items-start gap-5">
-          <div id="availability" class="empty:hidden"></div>
-          <div class="flex items-center gap-4 w-full min-w-0">
-            <div id="photo-small" class="lg:hidden shrink-0 w-20 h-20 empty:hidden"></div>
-            <h1 id="name" class="min-w-0 break-words font-display text-2xl sm:text-4xl lg:text-6xl font-extrabold text-night tracking-tight leading-tight"></h1>
+  <main class="flex-1">
+    <!-- 2. Accueil (Hero) -->
+    <section id="accueil" class="relative tech-grid-bg border-b border-light-outline-variant overflow-hidden">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12 py-14 lg:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Photo de profil (affichée en haut sur mobile, à droite sur desktop) -->
+          <div class="lg:col-span-5 lg:order-2 flex justify-center">
+            <div class="relative">
+              <div class="w-52 h-52 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full p-2 bg-light-surface-container-lowest border-2 border-light-outline-variant shadow-xl">
+                <img src="images/profile/photo.jpg" alt="Portrait de Sonieva Oliviera ALPHONSE" class="w-full h-full object-cover rounded-full" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'w-full h-full rounded-full bg-light-primary text-light-on-primary flex items-center justify-center text-4xl font-bold font-headline',textContent:'SOA'}))">
+              </div>
+              
+              <!-- Badges sous la photo -->
+              <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background shadow-sm">
+                  <span class="material-symbols-outlined text-[15px] text-accent" aria-hidden="true">terminal</span>
+                  Web &amp; Mobile
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background shadow-sm">
+                  <span class="material-symbols-outlined text-[15px] text-accent" aria-hidden="true">security</span>
+                  Cyber &amp; Forensique
+                </span>
+              </div>
+            </div>
           </div>
-          <p id="title" class="font-display text-lg sm:text-xl text-soft font-medium"></p>
-          <p id="intro" class="text-lg text-ink max-w-2xl leading-relaxed"></p>
-          <div id="cta" class="grid grid-cols-2 gap-3 w-full pt-2 sm:flex sm:flex-wrap sm:w-auto"></div>
-          <div id="socials" class="flex items-center justify-between w-full p-4 rounded-xl bg-mist sm:w-auto sm:flex-wrap sm:justify-start sm:gap-3 sm:p-0 sm:bg-transparent empty:hidden"></div>
+
+          <!-- Texte Hero -->
+          <div class="lg:col-span-7 lg:order-1 flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-light-surface-container-lowest border border-light-outline-variant shadow-sm">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-success animate-pulse" role="status" aria-label="Disponible"></span>
+              <span class="font-mono text-xs text-light-on-background font-medium">Disponible pour opportunités &amp; collaborations</span>
+            </div>
+
+            <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-light-on-background tracking-tight leading-tight">
+              Sonieva Oliviera ALPHONSE
+            </h1>
+
+            <p class="font-headline font-semibold text-lg sm:text-xl text-accent">
+              Développeur de solutions numériques | Cybersécurité
+            </p>
+
+            <p class="font-body text-base sm:text-lg text-light-on-surface-variant max-w-2xl leading-relaxed">
+              Diplômé en Sciences Informatiques et engagé dans un DESS en cybersécurité, je conçois et développe des applications intuitives et performantes tout en intégrant rigoureusement la sécurité des systèmes et des réseaux.
+            </p>
+
+            <!-- 3 Boutons d'action -->
+            <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-3">
+              <a href="#projets" class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-2.5 rounded-lg bg-accent text-on-accent font-label text-sm font-semibold shadow-sm hover:bg-light-primary transition-colors">
+                <span>Voir mes projets</span>
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_downward</span>
+              </a>
+
+              <a href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-2.5 rounded-lg bg-light-primary text-light-on-primary font-label text-sm font-semibold hover:bg-light-primary-container transition-colors shadow-sm">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>
+                <span>Télécharger mon CV</span>
+              </a>
+
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-2.5 rounded-lg bg-light-surface-container-lowest text-light-primary border border-light-outline-variant font-label text-sm font-semibold hover:border-accent hover:text-accent transition-colors">
+                <span>Me contacter</span>
+              </a>
+            </div>
+
+            <!-- Réseaux LinkedIn et GitHub -->
+            <div class="flex items-center gap-3 pt-2">
+              <span class="font-label text-xs uppercase tracking-wider text-light-outline font-semibold">Réseaux :</span>
+              <a href="https://www.linkedin.com/in/sonieva07/" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn de Sonieva Oliviera ALPHONSE" class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-light-surface-container-lowest border border-light-outline-variant text-light-primary hover:border-accent hover:text-accent transition-colors shadow-sm" title="LinkedIn">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+              </a>
+              <a href="https://github.com/Sonieva08" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub de Sonieva Oliviera ALPHONSE" class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-light-surface-container-lowest border border-light-outline-variant text-light-primary hover:border-accent hover:text-accent transition-colors shadow-sm" title="GitHub">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div id="photo" class="hidden lg:flex lg:col-span-5 justify-center lg:justify-end"></div>
-      </div>
-      <div class="relative max-w-6xl mx-auto px-5 pb-12 md:pb-16">
-        <div id="stats" class="bg-white rounded-xl shadow-sm p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 empty:hidden"></div>
       </div>
     </section>
 
-    <!-- À PROPOS -->
-    <section id="apropos" class="bg-mist py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">À propos</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <div id="about" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    <!-- 3. À propos -->
+    <section id="a-propos" class="py-16 lg:py-20 bg-light-surface-container-lowest border-b border-light-outline-variant">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div class="lg:col-span-5 flex flex-col gap-2">
+            <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">person</span>
+              <span>01 / À propos</span>
+            </div>
+            <h2 class="font-headline font-bold text-2xl sm:text-3xl lg:text-4xl text-light-on-background">
+              Parcours &amp; démarche
+            </h2>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            <p class="font-body text-base sm:text-lg text-light-on-surface leading-relaxed">
+              Titulaire d'une <strong>Licence en Sciences Informatiques</strong> à l'Université de Technologie d'Haïti (UNITECH) et engagé dans un <strong>DESS en cybersécurité et informatique judiciaire</strong> (UNITECH / BRH), j'allie une base solide en génie logiciel à une spécialisation dans la protection des systèmes d'information.
+            </p>
+            <p class="font-body text-sm sm:text-base text-light-on-surface-variant leading-relaxed">
+              Mon approche consiste à comprendre en profondeur les besoins métiers, concevoir des architectures fiables, développer avec rigueur et appliquer les bonnes pratiques de sécurité (validation stricte, moindre privilège, analyse des menaces et supervision).
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-light-surface border border-light-outline-variant rounded-xl p-5 flex items-start gap-4 shadow-sm">
+                <span class="material-symbols-outlined text-[24px] text-accent shrink-0 mt-0.5" aria-hidden="true">verified_user</span>
+                <div>
+                  <h3 class="font-title font-semibold text-base text-light-on-background">Double compétence</h3>
+                  <p class="font-body text-xs sm:text-sm text-light-on-surface-variant mt-1">Développement applicatif structuré et sécurité proactive des systèmes.</p>
+                </div>
+              </div>
+              <div class="bg-light-surface border border-light-outline-variant rounded-xl p-5 flex items-start gap-4 shadow-sm">
+                <span class="material-symbols-outlined text-[24px] text-accent shrink-0 mt-0.5" aria-hidden="true">work</span>
+                <div>
+                  <h3 class="font-title font-semibold text-base text-light-on-background">Objectif professionnel</h3>
+                  <p class="font-body text-xs sm:text-sm text-light-on-surface-variant mt-1">Concevoir des solutions numériques à fort impact ou contribuer à la défense d'infrastructures critiques.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- COMPÉTENCES -->
-    <section id="competences" class="py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">Compétences</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <div id="skills" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    <!-- 4. Compétences (6 cartes par catégorie) -->
+    <section id="competences" class="py-16 lg:py-20 border-b border-light-outline-variant">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12 flex flex-col gap-10">
+        <div class="flex flex-col gap-2 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">hub</span>
+            <span>02 / Savoir-faire technique</span>
+          </div>
+          <h2 class="font-headline font-bold text-2xl sm:text-3xl lg:text-4xl text-light-on-background">
+            Compétences par domaine
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Carte 1 : Développement -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">code</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Développement</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Conception et développement d'applications web et desktop.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">C#</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">ASP.NET Web Forms</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Java</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Python</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">HTML5 / CSS3</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">JavaScript</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">MVC / MVVM</span>
+            </div>
+          </article>
+
+          <!-- Carte 2 : Bases de données -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">database</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Bases de données</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Modélisation, requêtes optimisées et gestion des accès.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">MySQL</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Oracle Database</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">SQL</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Firebase / Firestore</span>
+            </div>
+          </article>
+
+          <!-- Carte 3 : Cybersécurité -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">shield_lock</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Cybersécurité</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Protection périmétrique, évaluation des risques et investigation.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Cyberdéfense</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Sécurité réseau</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Analyse des risques</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Forensique</span>
+            </div>
+          </article>
+
+          <!-- Carte 4 : Réseaux -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">lan</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Réseaux</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Configuration, capture de paquets et observation du trafic.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Cisco Packet Tracer</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Wireshark</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Routage &amp; Commutation</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Supervision</span>
+            </div>
+          </article>
+
+          <!-- Carte 5 : Systèmes -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">dns</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Systèmes &amp; OS</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Administration système et environnements de déploiement.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Linux (Ubuntu / Debian)</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Windows Server / Client</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">macOS</span>
+            </div>
+          </article>
+
+          <!-- Carte 6 : Outils -->
+          <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-6 shadow-sm card-hover flex flex-col gap-4">
+            <header class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[22px]" aria-hidden="true">build</span>
+              </div>
+              <h3 class="font-title font-bold text-lg text-light-on-background">Outils &amp; Méthodes</h3>
+            </header>
+            <p class="text-xs text-light-on-surface-variant">Gestion de code, scripting et suites collaboratives.</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Git &amp; GitHub</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">GitLab</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">Bash / PowerShell</span>
+              <span class="px-2.5 py-1 rounded-full bg-accent-tint text-on-accent-tint font-mono text-xs font-medium">VS Code</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- PROJETS -->
-    <section id="projets" class="bg-mist py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">Projets</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <div id="projects" class="grid gap-6 lg:grid-cols-2"></div>
+    <!-- 5. Projets sélectionnés -->
+    <section id="projets" class="py-16 lg:py-20 bg-light-surface-container-lowest border-b border-light-outline-variant">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12 flex flex-col gap-10">
+        <div class="flex flex-col gap-2 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">folder_code</span>
+            <span>03 / Réalisations</span>
+          </div>
+          <h2 class="font-headline font-bold text-2xl sm:text-3xl lg:text-4xl text-light-on-background">
+            Projets sélectionnés
+          </h2>
+          <p class="text-light-on-surface-variant text-sm sm:text-base">
+            Quelques exemples concrets illustrant mes compétences en développement logiciel et en analyse de sécurité.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Projet 1 : GestFloreChicGirlsStore -->
+          <article class="bg-light-surface border border-light-outline-variant rounded-xl overflow-hidden shadow-sm card-hover flex flex-col h-full">
+            <div class="aspect-video w-full bg-light-surface-container overflow-hidden border-b border-light-outline-variant">
+              <img src="images/projects/00-gestflore-connexion.png" alt="Aperçu du projet GestFlore" class="w-full h-full object-cover object-top" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-light-primary text-light-on-primary font-mono text-sm\'>GestFloreChicGirlsStore</div>'">
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full bg-accent-tint text-accent font-mono text-xs font-semibold">Application Web</span>
+                <span class="material-symbols-outlined text-accent text-[20px]" aria-hidden="true">storefront</span>
+              </div>
+              <h3 class="font-title font-bold text-xl text-light-on-background">GestFloreChicGirlsStore</h3>
+              <p class="font-body text-sm text-light-on-surface-variant flex-1 leading-relaxed">
+                Application web de gestion des stocks et de point de vente pour une boutique : catalogue produits, suivi des alertes de rupture, panier d'achat, facturation et génération de reçus.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">C#</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">ASP.NET</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">MySQL</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Bootstrap</span>
+              </div>
+            </div>
+            <footer class="px-6 py-4 border-t border-light-outline-variant flex items-center gap-3">
+              <a href="#contact" class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline">
+                <span class="material-symbols-outlined text-[16px]">info</span>
+                <span>Présentation sur demande</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Projet 2 : LajanAnsanm -->
+          <article class="bg-light-surface border border-light-outline-variant rounded-xl overflow-hidden shadow-sm card-hover flex flex-col h-full">
+            <div class="aspect-video w-full bg-[#0B1F3A] overflow-hidden border-b border-light-outline-variant flex items-center justify-center gap-2.5 p-3 relative group">
+              <img src="images/projects/lajanansanm/screen-dashboard.jpg" alt="Tableau de bord LajanAnsanm" class="h-full rounded-lg shadow-xl object-contain border border-white/10 transition-transform duration-300 group-hover:scale-105">
+              <img src="images/projects/lajanansanm/screen-peman.jpg" alt="Suivi des paiements LajanAnsanm" class="h-full rounded-lg shadow-xl object-contain border border-white/10 transition-transform duration-300 group-hover:scale-105 hidden sm:block">
+              <img src="images/projects/lajanansanm/screen-tontin.jpg" alt="Gestion des tours de tontine LajanAnsanm" class="h-full rounded-lg shadow-xl object-contain border border-white/10 transition-transform duration-300 group-hover:scale-105 hidden md:block">
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full bg-accent-tint text-accent font-mono text-xs font-semibold">Projet Personnel / Web App</span>
+                <span class="material-symbols-outlined text-accent text-[20px]" aria-hidden="true">payments</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="images/projects/lajanansanm/logo.png" alt="Logo LajanAnsanm" class="w-10 h-10 rounded-full object-contain bg-white p-0.5 border border-light-outline-variant shadow-sm shrink-0">
+                <div>
+                  <h3 class="font-title font-bold text-xl text-light-on-background">LajanAnsanm</h3>
+                  <p class="text-xs text-light-outline font-medium">Jere Tontin ou, Bati Avenir ou</p>
+                </div>
+              </div>
+              <p class="font-body text-sm text-light-on-surface-variant flex-1 leading-relaxed">
+                Plateforme numérique collaborative facilitant la gestion, le suivi des cotisations et la transparence au sein des groupes d'épargne solidaire (tontine / sòl) en Haïti. Suivi en temps réel des versements, rappels automatisés et historique clair des opérations.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Web App</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Fintech locale</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Mobile-First</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Sécurité &amp; Rôles</span>
+              </div>
+            </div>
+            <footer class="px-6 py-4 border-t border-light-outline-variant flex items-center justify-between gap-3">
+              <a href="https://www.lajanansanm.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline">
+                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                <span>Visiter la plateforme (lajanansanm.com) ↗</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Projet 3 : LevelUpQuiz -->
+          <article class="bg-light-surface border border-light-outline-variant rounded-xl overflow-hidden shadow-sm card-hover flex flex-col h-full">
+            <div class="aspect-video w-full bg-gradient-to-br from-[#101d35] to-[#2563EB] flex flex-col items-center justify-center text-white p-6 text-center border-b border-light-outline-variant">
+              <span class="material-symbols-outlined text-5xl text-accent-tint mb-2">quiz</span>
+              <span class="font-headline font-bold text-2xl tracking-tight">LevelUpQuiz</span>
+              <span class="text-xs text-light-on-primary-container mt-1 font-mono">React Native · Expo · Firebase</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full bg-accent-tint text-accent font-mono text-xs font-semibold">Application Mobile</span>
+                <span class="material-symbols-outlined text-accent text-[20px]" aria-hidden="true">smartphone</span>
+              </div>
+              <h3 class="font-title font-bold text-xl text-light-on-background">LevelUpQuiz</h3>
+              <p class="font-body text-sm text-light-on-surface-variant flex-1 leading-relaxed">
+                Jeu de quiz interactif avec test de positionnement, timer par question, système de points d'expérience (XP), déblocage de paliers et classements synchronisés en temps réel.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">React Native</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Expo</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Firebase Auth</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Firestore</span>
+              </div>
+            </div>
+            <footer class="px-6 py-4 border-t border-light-outline-variant flex items-center gap-3">
+              <a href="https://github.com/Sonieva07/LevelUpQuiz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline">
+                <span class="material-symbols-outlined text-[16px]">code</span>
+                <span>Code source sur GitHub ↗</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Projet 4 : Analyse des risques des systèmes de paiement -->
+          <article class="bg-light-surface border border-light-outline-variant rounded-xl overflow-hidden shadow-sm card-hover flex flex-col h-full">
+            <div class="aspect-video w-full bg-gradient-to-br from-[#0B1F3A] to-[#1F314D] flex flex-col items-center justify-center text-white p-6 text-center border-b border-light-outline-variant">
+              <span class="material-symbols-outlined text-5xl text-accent mb-2">security</span>
+              <span class="font-headline font-bold text-2xl tracking-tight">Analyse des risques</span>
+              <span class="text-xs text-light-on-primary-container mt-1 font-mono">Cybersécurité des systèmes de paiement</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full bg-accent-tint text-accent font-mono text-xs font-semibold">Projet Académique / DESS</span>
+                <span class="material-symbols-outlined text-accent text-[20px]" aria-hidden="true">policy</span>
+              </div>
+              <h3 class="font-title font-bold text-xl text-light-on-background">Cybersécurité des Systèmes de Paiement</h3>
+              <p class="font-body text-sm text-light-on-surface-variant flex-1 leading-relaxed">
+                Étude approfondie des menaces et vulnérabilités pesant sur les infrastructures de paiement. Élaboration d'une matrice de risques conforme à la norme ISO/IEC 27001 et proposition d'un lab de simulation sécurisé.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">ISO 27001</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Analyse des menaces</span>
+                <span class="px-2 py-0.5 rounded-md bg-light-surface-container-lowest border border-light-outline-variant font-mono text-xs text-light-on-background">Architecture réseau</span>
+              </div>
+            </div>
+            <footer class="px-6 py-4 border-t border-light-outline-variant flex items-center gap-3">
+              <a href="#contact" class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline">
+                <span class="material-symbols-outlined text-[16px]">article</span>
+                <span>Synthèse disponible sur demande</span>
+              </a>
+            </footer>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">Certifications</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <ul id="certs" class="flex flex-col gap-4"></ul>
+    <!-- 6. Certifications & 7. Formation -->
+    <section class="py-16 lg:py-20 border-b border-light-outline-variant">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- 6. Certifications -->
+        <div id="certifications" class="lg:col-span-6 flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">workspace_premium</span>
+              <span>04 / Certifications</span>
+            </div>
+            <h2 class="font-headline font-bold text-2xl sm:text-3xl text-light-on-background">
+              Certifications &amp; attestations
+            </h2>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 shadow-sm flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">security</span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-title font-semibold text-base text-light-on-background">Introduction to the Threat Landscape 3.0 (français)</h3>
+                <p class="font-body text-xs text-light-on-surface-variant">Fortinet Training Institute</p>
+                <span class="font-mono text-xs text-accent font-medium mt-1">21 avril 2026</span>
+              </div>
+            </article>
+
+            <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 shadow-sm flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">terminal</span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-title font-semibold text-base text-light-on-background">Basics of Python</h3>
+                <p class="font-body text-xs text-light-on-surface-variant">UniAthena / Cambridge International Qualifications</p>
+                <span class="font-mono text-xs text-accent font-medium mt-1">30 janvier 2026</span>
+              </div>
+            </article>
+
+            <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 shadow-sm flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">smartphone</span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-title font-semibold text-base text-light-on-background">Développement Mobile (Débutant &amp; Intermédiaire)</h3>
+                <p class="font-body text-xs text-light-on-surface-variant">Organisation internationale de la Francophonie (Projet D-CLIC)</p>
+                <span class="font-mono text-xs text-accent font-medium mt-1">Juillet &amp; Octobre 2026</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 7. Formation (Timeline verticale) -->
+        <div id="formation" class="lg:col-span-6 flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">school</span>
+              <span>05 / Formation académique</span>
+            </div>
+            <h2 class="font-headline font-bold text-2xl sm:text-3xl text-light-on-background">
+              Diplômes &amp; parcours
+            </h2>
+          </div>
+
+          <ol class="relative border-l-2 border-accent/40 ml-3 pl-6 flex flex-col gap-6">
+            <li class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-accent border-4 border-light-surface-container-lowest shadow" aria-hidden="true"></span>
+              <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 shadow-sm flex flex-col gap-1.5">
+                <span class="font-mono text-xs font-semibold text-accent">Mars 2025 – 2026 (En cours)</span>
+                <h3 class="font-title font-bold text-base text-light-on-background">DESS en Cybersécurité et Informatique Judiciaire</h3>
+                <p class="font-body text-xs text-light-on-surface-variant font-medium">Université de Technologie d'Haïti (UNITECH) / BRH</p>
+                <p class="text-xs text-light-outline mt-1 leading-relaxed">Spécialisation poussée en cyberdéfense, sécurité des systèmes de paiement et analyse forensique.</p>
+              </div>
+            </li>
+
+            <li class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-light-primary border-4 border-light-surface-container-lowest shadow" aria-hidden="true"></span>
+              <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-xl p-5 shadow-sm flex flex-col gap-1.5">
+                <span class="font-mono text-xs font-semibold text-light-primary">2020 – 2024</span>
+                <h3 class="font-title font-bold text-base text-light-on-background">Licence en Sciences Informatiques</h3>
+                <p class="font-body text-xs text-light-on-surface-variant font-medium">Université de Technologie d'Haïti (UNITECH)</p>
+                <p class="text-xs text-light-outline mt-1 leading-relaxed">Génie logiciel, algorithmique, bases de données relationnelles, réseaux et sécurité informatique.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <!-- FORMATION -->
-    <section id="formation" class="bg-mist py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">Formation</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <ul id="education" class="relative flex flex-col gap-8 pl-8 sm:pl-10 before:absolute before:left-[7px] sm:before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-electric/30"></ul>
-      </div>
-    </section>
+    <!-- 8. Contact -->
+    <section id="contact" class="py-16 lg:py-20 bg-light-surface-container-lowest">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="inline-flex items-center gap-1.5 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">mail</span>
+              <span>06 / Me contacter</span>
+            </div>
+            <h2 class="font-headline font-bold text-2xl sm:text-3xl lg:text-4xl text-light-on-background">
+              Construisons quelque chose ensemble.
+            </h2>
+            <p class="font-body text-sm sm:text-base text-light-on-surface-variant leading-relaxed">
+              Vous avez un projet, une proposition de collaboration ou une opportunité de stage/emploi ? N'hésitez pas à me transmettre un message ou à m'écrire directement.
+            </p>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-14 md:py-20">
-      <div class="max-w-6xl mx-auto px-5">
-        <h2 class="font-display text-3xl font-bold text-night">Contact</h2>
-        <div class="w-16 h-1 bg-electric rounded-full mt-3 mb-10"></div>
-        <div class="max-w-xl">
-          <p id="contact-text" class="text-lg text-soft mb-8 empty:hidden"></p>
-          <ul id="contact-list" class="flex flex-col gap-3"></ul>
-          <div id="contact-cv" class="mt-8 empty:hidden"></div>
+            <div class="flex flex-col gap-3 pt-2">
+              <a href="mailto:alphonseolivier07@gmail.com" class="inline-flex items-center gap-3 p-3 rounded-lg border border-light-outline-variant bg-light-surface hover:border-accent transition-colors font-body text-sm text-light-on-background">
+                <span class="w-8 h-8 rounded bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[18px]">mail</span>
+                </span>
+                <span class="font-medium">alphonseolivier07@gmail.com</span>
+              </a>
+
+              <div class="flex flex-wrap items-center gap-2 pt-1">
+                <a href="https://www.linkedin.com/in/sonieva07/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-light-surface border border-light-outline-variant font-label text-xs font-semibold text-light-primary hover:border-accent hover:text-accent transition-colors">
+                  <span>LinkedIn ↗</span>
+                </a>
+                <a href="https://github.com/Sonieva08" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-light-surface border border-light-outline-variant font-label text-xs font-semibold text-light-primary hover:border-accent hover:text-accent transition-colors">
+                  <span>GitHub ↗</span>
+                </a>
+                <a href="documents/CV_Sonieva_Oliviera_Alphonse.pdf" download class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-light-primary text-light-on-primary font-label text-xs font-semibold hover:bg-light-primary-container transition-colors shadow-sm">
+                  <span class="material-symbols-outlined text-[16px]">download</span>
+                  <span>CV PDF</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulaire de contact -->
+          <div class="lg:col-span-7 bg-light-surface border border-light-outline-variant rounded-2xl p-6 sm:p-8 shadow-sm">
+            <form id="contact-form" class="flex flex-col gap-4" onsubmit="handleFormSubmit(event)">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label class="flex flex-col gap-1.5">
+                  <span class="font-label text-xs font-semibold text-light-on-background">Nom complet</span>
+                  <input type="text" id="form-name" name="name" required placeholder="Votre nom" class="w-full min-h-[44px] px-3.5 py-2 rounded-lg bg-light-surface-container-lowest border border-light-outline-variant text-light-on-surface font-body text-sm placeholder:text-light-outline focus:border-accent focus:ring-2 focus:ring-accent focus:outline-none">
+                </label>
+
+                <label class="flex flex-col gap-1.5">
+                  <span class="font-label text-xs font-semibold text-light-on-background">Adresse email</span>
+                  <input type="email" id="form-email" name="email" required inputmode="email" placeholder="nom@exemple.com" class="w-full min-h-[44px] px-3.5 py-2 rounded-lg bg-light-surface-container-lowest border border-light-outline-variant text-light-on-surface font-body text-sm placeholder:text-light-outline focus:border-accent focus:ring-2 focus:ring-accent focus:outline-none">
+                </label>
+              </div>
+
+              <label class="flex flex-col gap-1.5">
+                <span class="font-label text-xs font-semibold text-light-on-background">Message</span>
+                <textarea id="form-message" name="message" rows="4" required placeholder="Décrivez votre projet, opportunité ou demande..." class="w-full px-3.5 py-2 rounded-lg bg-light-surface-container-lowest border border-light-outline-variant text-light-on-surface font-body text-sm placeholder:text-light-outline focus:border-accent focus:ring-2 focus:ring-accent focus:outline-none"></textarea>
+              </label>
+
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <button type="submit" class="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-2.5 rounded-lg bg-accent text-on-accent font-label text-sm font-semibold shadow-sm hover:bg-light-primary transition-colors">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                  <span>Envoyer mon message</span>
+                </button>
+                <p id="form-feedback" class="hidden font-body text-xs font-medium text-success" role="status"></p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-mist pt-8 pb-28 md:pb-8">
-    <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-soft">
-      <span>© <span id="year"></span> <span id="footer-name"></span>. Tous droits réservés.</span>
-      <a href="#accueil" class="hover:text-electric">Haut de page ↑</a>
+  <!-- 9. Pied de page -->
+  <footer class="bg-light-primary text-light-on-primary py-8 border-t border-light-primary-container">
+    <div class="max-w-[1200px] mx-auto px-5 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs text-light-on-primary-container text-center sm:text-left">
+        © <span id="current-year">2026</span> Sonieva Oliviera ALPHONSE. Tous droits réservés.
+      </p>
+
+      <div class="flex items-center gap-4">
+        <a href="https://www.linkedin.com/in/sonieva07/" target="_blank" rel="noopener noreferrer" class="font-label text-xs text-light-on-primary hover:text-accent transition-colors">LinkedIn</a>
+        <a href="https://github.com/Sonieva08" target="_blank" rel="noopener noreferrer" class="font-label text-xs text-light-on-primary hover:text-accent transition-colors">GitHub</a>
+        <a href="#accueil" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-light-primary-container text-light-on-primary font-label text-xs hover:bg-accent transition-colors">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_upward</span>
+          <span>Haut de page</span>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <!-- BARRE MOBILE -->
-  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,31,58,0.08)] pb-[env(safe-area-inset-bottom)]" aria-label="Navigation rapide">
-    <div class="flex justify-around items-center h-16 px-1">
-      <a href="#accueil" data-sections="accueil apropos" class="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 min-h-[44px] text-soft transition-colors">
-        <span class="material-symbols-outlined text-[22px]">home</span>
-        <span class="text-[10px] leading-tight">Accueil</span>
-      </a>
-      <a href="#competences" data-sections="competences" class="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 min-h-[44px] text-soft transition-colors">
-        <span class="material-symbols-outlined text-[22px]">construction</span>
-        <span class="text-[10px] leading-tight">Skills</span>
-      </a>
-      <a href="#projets" data-sections="projets" class="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 min-h-[44px] text-soft transition-colors">
-        <span class="material-symbols-outlined text-[22px]">folder</span>
-        <span class="text-[10px] leading-tight">Projets</span>
-      </a>
-      <a href="#certifications" data-sections="certifications formation" class="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 min-h-[44px] text-soft transition-colors">
-        <span class="material-symbols-outlined text-[22px]">school</span>
-        <span class="text-[10px] leading-tight">Parcours</span>
-      </a>
-      <a href="#contact" data-sections="contact" class="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 min-h-[44px] text-soft transition-colors">
-        <span class="material-symbols-outlined text-[22px]">mail</span>
-        <span class="text-[10px] leading-tight">Contact</span>
-      </a>
-    </div>
-  </nav>
+  <!-- Scripts -->
+  <script>
+    // Année dynamique
+    const yearElem = document.getElementById('current-year');
+    if (yearElem) yearElem.textContent = new Date().getFullYear();
 
-  <script src="js/data.js"></script>
-  <script src="js/script.js"></script>
+    // Menu Mobile Tiroir
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-nav-drawer');
+    if (menuBtn && mobileDrawer) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = !mobileDrawer.classList.contains('hidden');
+        mobileDrawer.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Gestion du formulaire avec ouverture du client mail
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const message = document.getElementById('form-message').value;
+
+      const feedback = document.getElementById('form-feedback');
+      if (feedback) {
+        feedback.textContent = 'Ouverture de votre messagerie pour transmettre votre message...';
+        feedback.classList.remove('hidden');
+      }
+
+      // Préparation du lien mailto pré-rempli
+      const subject = encodeURIComponent(`Contact Portfolio - ${name}`);
+      const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:alphonseolivier07@gmail.com?subject=${subject}&body=${body}`;
+
+      setTimeout(() => {
+        if (feedback) {
+          feedback.textContent = 'Merci ! Votre message a été préparé.';
+        }
+        e.target.reset();
+      }, 1000);
+    }
+  </script>
+
 </body>
 </html>
